@@ -27,7 +27,7 @@ const Contact = () => {
                 <textarea
                     className='textarea w-full max-w-md'
                     placeholder='Your message'
-                    rows={6}
+                    rows={4}
                 ></textarea>
                 <PrimaryButton>Submit</PrimaryButton>
             </div>
