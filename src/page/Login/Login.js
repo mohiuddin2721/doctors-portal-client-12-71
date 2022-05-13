@@ -15,11 +15,17 @@ const Login = () => {
 
     const { register, formState: { errors }, handleSubmit } = useForm();
 
-    if (true || gLoading || loading) {
+    let errorMessage;
+
+    if (gLoading || loading) {
         return <Loading></Loading>
     }
 
-    if (user) {
+    if (gError || error) {
+        errorMessage = <p className='text-red-500'><small>{error?.message || gError?.message}</small></p>
+    }
+
+    if (gUser || user) {
         console.log(user);
     }
 
@@ -87,7 +93,7 @@ const Login = () => {
 
                             </label>
                         </div>
-
+                            {errorMessage}
                         <input className='btn w-full max-w-xs text-white' type="submit" value="Login" />
                     </form>
 
