@@ -3,6 +3,7 @@ import './App.css';
 import About from './page/About/About';
 import Appointment from './page/Appointment/Appointment';
 import Home from './page/Home/Home';
+// import Review from './page/Home/Review';
 import Login from './page/Login/Login';
 import RequireAuth from './page/Login/RequireAuth';
 import SignUp from './page/Login/SignUp';
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
+        {/* <Route path="reviews" element={<Review />} /> */}
         <Route path="appointment" element={
           <RequireAuth>
             <Appointment />
