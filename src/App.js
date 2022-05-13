@@ -4,6 +4,7 @@ import About from './page/About/About';
 import Appointment from './page/Appointment/Appointment';
 import Home from './page/Home/Home';
 import Login from './page/Login/Login';
+import SignUp from './page/Login/SignUp';
 import Navbar from './page/Shared/Navbar';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="about" element={<About />} />
         <Route path="appointment" element={<Appointment />} />
         <Route path="login" element={<Login />} />
+        <Route path="signUp" element={<SignUp />} />
       </Routes>
     </div>
   );
