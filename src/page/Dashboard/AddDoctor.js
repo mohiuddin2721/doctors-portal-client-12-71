@@ -63,21 +63,16 @@ const AddDoctor = () => {
 
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
-                            <span className="label-text">Password</span>
-
+                            <span className="label-text">Specialty</span>
                         </label>
                         <input
-                            type="password"
-                            placeholder="Password"
+                            type="text"
+                            placeholder="specialty"
                             className="input input-bordered w-full max-w-xs"
-                            {...register("password", {
+                            {...register("specialty", {
                                 required: {
                                     value: true,
-                                    message: 'Password is required'
-                                },
-                                minLength: {
-                                    value: 6,
-                                    message: 'Must be 6 characters or longer'
+                                    message: 'Specialization is Required'
                                 }
                             })}
                         />
@@ -87,7 +82,7 @@ const AddDoctor = () => {
 
                         </label>
                     </div>
-                    <input className='btn w-full max-w-xs text-white' type="submit" value="Sign Up" />
+                    <input className='btn w-full max-w-xs text-white' type="submit" value="Add" />
                 </form>
             </div>
         </div>
