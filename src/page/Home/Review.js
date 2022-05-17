@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Review = ({ review }) => {
-    console.log(review);
+    // console.log(review);
     return (
         <div className="card md:max-w-lg bg-base-100 shadow-xl">
             <div className="card-body">
