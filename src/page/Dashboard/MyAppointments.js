@@ -30,7 +30,7 @@ const MyAppointments = () => {
                 setAppointments(data)
             })
 
-    }, [user])
+    }, [user, navigate])
 
     return (
         <div>
