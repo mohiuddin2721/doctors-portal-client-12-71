@@ -6,7 +6,7 @@ import Loading from '../Shared/Loading';
 
 const AddDoctor = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
-    const { data: services, isLoading } = useQuery('service', () => fetch('http://localhost:5000/service').then(res => res.json()))
+    const { data: services, isLoading } = useQuery('service', () => fetch('https://stormy-taiga-12513.herokuapp.com/service').then(res => res.json()))
 
     const imageStorageKey = 'c016290e08f02d9e406bf3ce2e202309';
 
@@ -41,7 +41,7 @@ const AddDoctor = () => {
                     img: img
                 }
                 // send to your database
-                fetch('http://localhost:5000/doctor', {
+                fetch('https://stormy-taiga-12513.herokuapp.com/doctor', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',
@@ -123,7 +123,7 @@ const AddDoctor = () => {
                         <label className="label">
                             <span className="label-text">Specialty</span>
                         </label>
-                        <select {...register('specialty')} class="select input-bordered w-full max-w-xs">
+                        <select {...register('specialty')} className="select input-bordered w-full max-w-xs">
                             {
                                 services.map(service => <option
                                     key={service._id}

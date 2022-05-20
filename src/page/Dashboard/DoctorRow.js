@@ -1,14 +1,14 @@
 import React from 'react';
 
-const DoctorRow = ({ doctor, index, refetch, setDeletingDoctor }) => {
+const DoctorRow = ({ doctor, index, setDeletingDoctor }) => {
     const { name, specialty, img } = doctor;
 
     return (
         <tr>
             <th>{index + 1}</th>
             <th>
-                <div class="avatar">
-                    <div class="w-16 rounded-full">
+                <div className="avatar">
+                    <div className="w-16 rounded-full">
                         <img src={img} alt={name} />
                     </div>
                 </div>
@@ -16,7 +16,7 @@ const DoctorRow = ({ doctor, index, refetch, setDeletingDoctor }) => {
             <td>{name}</td>
             <td>{specialty}</td>
             <td>
-                <label onClick={() => setDeletingDoctor(doctor)} for="delete-confirm-modal" class="btn btn-xs btn-error">Delete</label>
+                <label onClick={() => setDeletingDoctor(doctor)} for="delete-confirm-modal" className="btn btn-xs btn-error">Delete</label>
             </td>
         </tr>
     );
