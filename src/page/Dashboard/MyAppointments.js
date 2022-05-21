@@ -10,25 +10,27 @@ const MyAppointments = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`https://stormy-taiga-12513.herokuapp.com/booking?patient=${user.email}`, {
-            method: 'GET',
-            headers: {
-                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-            }
-        })
-            .then(res => {
-                console.log('res', res);
-                if (res.status === 401 || res.status === 403) {
-                    signOut(auth);
-                    localStorage.removeItem('accessToken');
-                    navigate('/');
+        if (user) {
+            fetch(`https://stormy-taiga-12513.herokuapp.com/booking?patient=${user.email}`, {
+                method: 'GET',
+                headers: {
+                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
                 }
-                return res.json()
             })
-            .then(data => {
+                .then(res => {
+                    console.log('res', res);
+                    if (res.status === 401 || res.status === 403) {
+                        signOut(auth);
+                        localStorage.removeItem('accessToken');
+                        navigate('/');
+                    }
+                    return res.json()
+                })
+                .then(data => {
 
-                setAppointments(data)
-            })
+                    setAppointments(data)
+                })
+        }
 
     }, [user, navigate])
 
@@ -51,7 +53,7 @@ const MyAppointments = () => {
                         <tbody>
                             {
                                 appointments?.map((a, index) =>
-                                    <tr>
+                                    <tr key={a._id}>
                                         <th>{index + 1}</th>
                                         <td>{a.patientName}</td>
                                         <td>{a.date}</td>
@@ -59,7 +61,10 @@ const MyAppointments = () => {
                                         <td>{a.treatment}</td>
                                         <td>
                                             {(a.price && !a.paid) && <Link to={`/dashboard/payment/${a._id}`}><button className='btn btn-xs btn-success'>Pay</button></Link>}
-                                            {(a.price && a.paid) && <span className='text-success'>Paid</span>}
+                                            {(a.price && a.paid) && <div>
+                                                <p><span className='text-success'>Paid</span></p>
+                                                <p>Transaction id: <span className='text-success'>{a.transactionId}</span></p>
+                                            </div>}
                                         </td>
                                     </tr>)
                             }
